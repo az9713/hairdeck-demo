@@ -16,6 +16,7 @@ def retry(fn,tries=6):
             time.sleep(5*(i+1))
 
 def fetch(url,path,size=None):
+    if not url.startswith(B.rsplit('/',1)[0]+'/'): raise ValueError('file URL is not on the Space: '+url)
     if size and os.path.exists(path) and os.path.getsize(path)==size: return
     def get():
         r=cl.get(url); r.raise_for_status()
@@ -48,6 +49,6 @@ else:
 print(repr(d[6])[:300])
 # ponytail: only the JSON files, because rig.py reads them and no step reads the GLB files
 for f in d[5] or []:
-    name=f.get('orig_name') or os.path.basename(f['path'])
+    name=os.path.basename(f.get('orig_name') or f['path'])
     if name.endswith('.json'): fetch(f['url'],os.path.join(out,name),f.get('size'))
 if d[0]: fetch(d[0]['url'],os.path.join(out,'prep.webp'))
