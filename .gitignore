@@ -1,0 +1,20 @@
+# Local only: resume notes, third-party clone, large output
+HANDOFF.md
+HairDeck/
+out/
+__pycache__/
+blender/t_*.py
+
+# The avatar licence prohibits redistribution
+assets/avatar/
+
+# Third-party text, and files that the film does not use
+assets/hair_whisper_transcript.txt
+assets/example_result/
+assets/music/a.mp3
+assets/plates/spring_raw.png
+assets/styles/long_b.png
+assets/styles/curly_a.png
+
+# Local tool cache (holds local paths)
+.impeccable/
